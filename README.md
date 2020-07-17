@@ -42,11 +42,51 @@ time_delay is the integer which determines the sampling rate in the animation of
 
 ## Weighted Linear Regression
 
-The normal equation is directly used to make prediction of Y in the case of weighted linear regression.
+In the weighted linear regression, the training step is repeated for the prediction of each new example, as those points which are nearer to the given
+test points are given more weight in training step.
+
+The normal equation is directly used to make prediction Y of individual points in the case of weighted linear regression.
+
 The normal equation for simple linear regression is:           
 𝜽 = (𝑿<sup>𝑻</sup>𝑿)<sup>−𝟏</sup>(𝑿<sup>𝑻</sup>𝒀) 
+
+The normal equation for weighted linear regression becomes:           
+𝜽 = (𝑿<sup>𝑻</sup>W𝑿)<sup>−𝟏</sup>(𝑿<sup>𝑻</sup>W𝒀) 
+
+where, **W** is the weight matrix calculated in the provided code, using the formula:
+
+<math>w<sup>(i)</sup>  = exp(-(x<sup>(i)</sup> - x)<sup>2</sup> / &tau;<sup>2</sup>)</math>
+
+here x is the given test point and x(i) is the single training point.
+each w<sup>(i)</sup> is the diagonal element of the weight matrix **W**
+
+where, <math>&tau;</math> is called the bandwidth parameter and controls the rate at which <math>w<sup>(i)</sup></math> falls with distance from x.
+
+The prediction by the code can be checked with different values of the parameter <math>&tau;</math>. 
+
+graphical analysis is provided in the code for better understanding.
 
 To run the code use the following command:
 ```
 python weighted_linear_regression.py weightedX.csv weightedY.csv tau
+```
+
+## Logistic Regression
+
+The learning rate and the convergence threshold can be changed in the code. 
+
+To run the code use the following command:
+```
+python logistic_regression.py logisticX.csv logisticY.csv
+```
+## Gaussian Descriminant Analysis
+
+there are two different codes, one with linear separator and other with a quadratic separator. 
+The result from both of them is provided in the attached report.
+
+To run the code use the following command:
+```
+python gaussian_descriminanat_analysis.py logisticX.csv logisticY.csv
+or
+python gda2.py logisticX.csv logisticY.csv
 ```
